@@ -7,10 +7,6 @@ from langchain_community.chat_models import ChatOllama
 
 import streamlit as st
 import ollama
-import os
-import json
-# from numpy.linalg import norm
-from PyPDF2 import PdfReader
 from typing import Dict, Generator
 from glob import glob
 
@@ -30,7 +26,7 @@ def ollama_generator(messages: Dict) -> Generator:
 
 
 ### Data Integration
-folder_path= '/Users/rayaneghilene/Documents/Ollama/RAG/Famso-Data'
+folder_path= '/Famso-Data'
 @st.cache_resource
 def load_pdf():
     # pdf_name ='Issues with Entailment-based Zero-shot Text Classification.pdf'
@@ -62,7 +58,7 @@ chain= RetrievalQA.from_chain_type(
 
 with st.sidebar:
     # st.title('Side Bar')
-    st.image('/Users/rayaneghilene/Documents/Ollama/RAG/famso_logo.png',  use_column_width='auto')
+    st.image('famso_logo.png',  use_column_width='auto')
     # st.file_uploader('Upload your own file')
 st.title('FAMSO Chatbot')
 st.text('Supported class: Bactériologie- Pr Manel Marzouk-Dr Farah Azouzi')
@@ -88,16 +84,4 @@ if prompt:
     st.chat_message("assistant").markdown(response)
 
     st.session_state.messages.append( {"role": "assistant", "content": response})    
-
-    # with st.chat_message("assistant"):
-    #     # response = st.write_stream(ollama_generator(st.session_state.messages))
-    #     response = st.write_stream(chain.run(st.session_state.messages))
-  
-    # st.session_state.messages.append({"role": "assistant", "content": response})
-
-
-    # with st.chat_message("assistant"):
-    #     response = st.write_stream(ollama_generator(
-    #         st.session_state.selected_model, st.session_state.messages)) 
-    #     st.session_state.messages.append( {"role": "assistant", "content": response})
 
