@@ -1,3 +1,5 @@
+!pip install ollama 
+
 import streamlit as st
 # from wastonxlangchain import LangchainInterference
 import ollama
