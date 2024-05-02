@@ -1,14 +1,4 @@
 import streamlit as st
-import time
-import os
-import json
-import numpy as np
-from numpy.linalg import norm
-from PyPDF2 import PdfReader
-from typing import Dict, Generator
-
-
-
 
 ### INTERFACE
 st.title('Ask Away....')
